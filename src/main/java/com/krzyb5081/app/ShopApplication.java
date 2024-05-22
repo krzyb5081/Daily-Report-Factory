@@ -1,4 +1,4 @@
-package com.shop.project;
+package com.krzyb5081.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
