@@ -1,4 +1,4 @@
-package com.krzyb5081.configuration;
+package com.krzyb5081.app.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
