@@ -17,8 +17,13 @@ public class ViewController {
 		return "showReports";
 	}
 	
+	@GetMapping("/createReport")
+	public String getCreateReport() {
+		return "createReport";
+	}
+	
 	@PostMapping("/createReport")
-	public String createReport() {
+	public String postCreateReport() {
 		return "createReport";
 	}
 }
