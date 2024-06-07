@@ -8,8 +8,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ViewController {
 
 	@GetMapping("/")
-	public String react() {
+	public String slash() {
 		return "index";
+	}
+	
+	@GetMapping("/home")
+	public String home() {
+		return "index";
+	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
 	}
 	
 	@GetMapping("/showReports")
