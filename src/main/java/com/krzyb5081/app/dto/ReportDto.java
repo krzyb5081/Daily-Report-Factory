@@ -13,5 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class ReportDto {
-
+	public String nameAndSurname;
+	public String date;
+	public String workTime;
+	public String thingsDone;
+	public String thingsToFinish;
+	public String thingsUndone;
 }
