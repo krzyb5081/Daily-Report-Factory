@@ -3,9 +3,10 @@ package com.krzyb5081.app.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.krzyb5081.app.dto.ReportDto;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class ViewController {
@@ -33,8 +34,8 @@ public class ViewController {
 	}
 	
 	@PostMapping("/createReport")
-	public String postCreateReport(@RequestBody ReportDto reportDto) {
+	public String postCreateReport(@Valid ReportDto reportDto) {
 		System.out.print(reportDto.toString());
-		return "createReport";
+		return "showReport";
 	}
 }
