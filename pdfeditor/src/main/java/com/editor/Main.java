@@ -13,6 +13,7 @@ public class Main {
 	    PdfReader reader = new PdfReader("src/main/resources/template.pdf");
 	    PdfWriter writer = new PdfWriter("src/main/resources/template-modified.pdf");
 	    PdfDocument pdfDocument = new PdfDocument(reader, writer);
+	    pdfDocument.open();
 	    pdfDocument.close();
 
 	}
