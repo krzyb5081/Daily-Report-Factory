@@ -1,50 +1,27 @@
 package pdfeditor;
 
-import java.io.File;
 import java.io.IOException;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
 
 public class Main {
 
+	
+	
 	public static void main(String[] args) throws IOException {
-		File template = new File("src/pdfeditor/template.pdf");
+		TextWriter writer = new TextWriter("src/pdfeditor/template.pdf","src/pdfeditor/report.pdf");
 		
-		//loading document
-		PDDocument document = PDDocument.load(template);
+		writer.openFile();
 		
-		//getting first page
-		PDPage page = document.getPage(0);
+		writer.write(0, 0, "Testing text content writing in PDFbox");
+		writer.write(30, 300, "Testing text content writing in PDFbox");
+		writer.write(0, 300, "Testing text content aaaa in PDFbox");
+		writer.write(0, 200, "Testing text content writing in PDFbox");
+		writer.write(200, 0, "Testing text content writing in PDFbox");
+		writer.write(400, 400, "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
 		
-		//preparing content stream for editing in append mode
-		PDPageContentStream contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, false);
 		
-		//starting text content
-		contentStream.beginText();
-		
-		//setting text position
-		contentStream.newLineAtOffset(0, 0);
-		
-		//setting font
-		contentStream.setFont(PDType1Font.TIMES_BOLD_ITALIC, 14);
-		
-		//write text content
-		contentStream.showText("Testing text content writing in PDFbox");
-		
-		//ending text content
-		contentStream.endText();
-		
-		//closing content stream
-		contentStream.close();
-		
-		//saving document
-		document.save("src/pdfeditor/report.pdf");
-		
-		//closing document
-		document.close();
+		writer.saveFile();
 	}
 
 }
