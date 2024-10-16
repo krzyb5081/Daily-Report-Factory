@@ -39,23 +39,6 @@ public class TextWriter {
 		//write text content
 		this.contentStream.showText(text);
 		
-		//just for testing
-				//setting text position
-				this.contentStream.newLineAtOffset(offsetX, offsetY);
-				
-				//write text content
-				this.contentStream.showText(text);
-				//setting text position
-				this.contentStream.newLineAtOffset(offsetX, offsetY);
-				
-				//write text content
-				this.contentStream.showText(text);
-				//setting text position
-				this.contentStream.newLineAtOffset(offsetX, offsetY);
-				
-				//write text content
-				this.contentStream.showText(text);
-		
 		//ending text content
 		this.contentStream.endText();
 		
