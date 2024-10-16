@@ -30,14 +30,31 @@ public class TextWriter {
 		//starting text content
 		this.contentStream.beginText();
 		
-		//setting text position
-		this.contentStream.newLineAtOffset(offsetX, offsetY);
-		
 		//setting font
 		this.contentStream.setFont(PDType1Font.TIMES_BOLD_ITALIC, 14);
 		
+		//setting text position
+		this.contentStream.newLineAtOffset(offsetX, offsetY);
+		
 		//write text content
 		this.contentStream.showText(text);
+		
+		//just for testing
+				//setting text position
+				this.contentStream.newLineAtOffset(offsetX, offsetY);
+				
+				//write text content
+				this.contentStream.showText(text);
+				//setting text position
+				this.contentStream.newLineAtOffset(offsetX, offsetY);
+				
+				//write text content
+				this.contentStream.showText(text);
+				//setting text position
+				this.contentStream.newLineAtOffset(offsetX, offsetY);
+				
+				//write text content
+				this.contentStream.showText(text);
 		
 		//ending text content
 		this.contentStream.endText();
