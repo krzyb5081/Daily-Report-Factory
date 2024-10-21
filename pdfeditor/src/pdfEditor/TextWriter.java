@@ -1,4 +1,4 @@
-package pdfeditor;
+package pdfEditor;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class TextWriter {
 		this.contentStream.beginText();
 		
 		//setting font
-		this.contentStream.setFont(PDType1Font.TIMES_BOLD_ITALIC, 14);
+		this.contentStream.setFont(PDType1Font.TIMES_ROMAN, 10);
 		
 		//setting text position
 		this.contentStream.newLineAtOffset(offsetX, offsetY);
