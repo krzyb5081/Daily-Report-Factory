@@ -2,6 +2,8 @@ package pdfEditor;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -23,6 +25,7 @@ public class TextWriter {
 	
 	public void write(float offsetX, float offsetY, String text) throws IOException {
 		
+		this.splitText(text, 10);
 		
 		//preparing content stream for editing in append mode
 		this.contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, false);
@@ -60,5 +63,41 @@ public class TextWriter {
 		
 		//closing document
 		this.document.close();
+		
+	}
+	
+	private List<String> splitText(String text, int maxLineLength) {
+		List<String> textList = new ArrayList<String>();
+		
+		if(text.length() <= maxLineLength) {
+			textList.add(text);
+			return textList;
+		}
+		
+		int startIndex = 0;
+		
+		while(startIndex < text.length()) {
+			
+			
+			int endIndex = startIndex + maxLineLength;
+			
+			if(endIndex >= text.length()) {
+				endIndex = text.length();
+			} else {
+				while((endIndex < text.length() && (text.charAt(endIndex) != ' '))) endIndex++;
+			}
+			
+			textList.add(text.substring(startIndex, endIndex));
+			
+			startIndex = endIndex;
+			
+		}
+		
+		
+		for (String showString: textList) {
+			System.out.println(showString);
+		}
+		
+		return textList;
 	}
 }
