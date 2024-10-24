@@ -25,8 +25,6 @@ public class TextWriter {
 	
 	public void write(float offsetX, float offsetY, String text) throws IOException {
 		
-		this.splitText(text, 10);
-		
 		//preparing content stream for editing in append mode
 		this.contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, false);
 		
@@ -36,11 +34,18 @@ public class TextWriter {
 		//setting font
 		this.contentStream.setFont(PDType1Font.TIMES_ROMAN, 10);
 		
-		//setting text position
+		//setting initial text position
 		this.contentStream.newLineAtOffset(offsetX, offsetY);
 		
-		//write text content
-		this.contentStream.showText(text);
+		for(String textFragment: this.splitText(text, 100)) {
+			
+			//write text content
+			this.contentStream.showText(textFragment);
+			
+			//setting new line position
+			this.contentStream.newLineAtOffset(0, -10);
+			
+		}
 		
 		//ending text content
 		this.contentStream.endText();
@@ -85,6 +90,7 @@ public class TextWriter {
 				endIndex = text.length();
 			} else {
 				while((endIndex < text.length() && (text.charAt(endIndex) != ' '))) endIndex++;
+				
 			}
 			
 			textList.add(text.substring(startIndex, endIndex));
