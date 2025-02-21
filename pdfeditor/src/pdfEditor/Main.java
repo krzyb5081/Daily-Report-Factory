@@ -12,6 +12,10 @@ public class Main {
 	public static String thingsDone = "Text here1, text here2, text here3, text here4, text here5ssssssssssssssssssssssssssssssssssssss, text here6, text here7, text here8, text here9, text here10, text here11, text here12, text here13, text here14.";
 	public static String thingsToFinish = "Text here1, text here2, text here3, text here4, text here5, text here6, text here7, text here8, text here9, text here10, text here11, text here12, text here13, text here14.";
 	public static String thingsUndone = "Text here1, text here2, text here3, text here4, text here5, text here6, text here7, text here8, text here9, text here10, text here11, text here12, text here13, text here14.";
+	public static bool late = false;
+	public static bool dailyDuty = false;
+	public static bool weekendDuty = false;
+	
 	
 	public static void main(String[] args) throws IOException {
 		TextWriter writer = new TextWriter("src/pdfeditor/template.pdf","src/pdfeditor/report.pdf");
