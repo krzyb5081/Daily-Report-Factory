@@ -8,6 +8,7 @@ public class DailyReportFactoryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DailyReportFactoryApplication.class, args);
+		System.out.println("hello from the other side");
 	}
 
 }
