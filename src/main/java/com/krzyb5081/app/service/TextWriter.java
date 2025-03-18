@@ -54,12 +54,18 @@ public class TextWriter {
 		this.contentStream.close();
 	}
 	
-	public void openFile() throws IOException {
+	public void openFile() {
 		//loading document
-		this.document = PDDocument.load(this.templateFile);
+		try {
+			this.document = PDDocument.load(templateFile);
+		} catch (IOException e) {
+			this.document = new PDDocument();
 		
-		//getting first page
-		this.page = document.getPage(0);
+			//getting first page
+			this.page = new PDPage();
+			this.document.addPage(page);
+		}
+		
 	}
 	
 	public void saveFile() throws IOException {

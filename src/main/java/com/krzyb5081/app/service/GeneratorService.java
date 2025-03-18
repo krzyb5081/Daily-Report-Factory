@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Service;
 
+import com.krzyb5081.app.dto.ReportDto;
+
 @Service
 public class GeneratorService {
 	public static String nameAndSurname = "Jan Kowalski";
@@ -16,18 +18,18 @@ public class GeneratorService {
 	public static Boolean holidayDuty = false;
 	public static Boolean late = false;
 	
-	public void generateReport() throws IOException {
+	public void generateReport(ReportDto report) throws IOException {
 
-		TextWriter writer = new TextWriter("src/pdfeditor/template.pdf","src/pdfeditor/report.pdf");
+		TextWriter writer = new TextWriter("src/main/resources/generator/template.pdf","src/main/resources/generator/report.pdf");
 		
 		writer.openFile();
 		
-		writer.write(120, 700, nameAndSurname);
-		writer.write(300, 700, date);
-		writer.write(400, 700, workTime);
-		writer.write(120, 600, thingsDone);
-		writer.write(120, 420, thingsToFinish);
-		writer.write(120, 260, thingsUndone);
+		writer.write(120, 700, report.getNameAndSurname());
+		writer.write(300, 700, report.getDate());
+		writer.write(400, 700, report.getWorkTime());
+		writer.write(120, 600, report.getThingsDone());
+		writer.write(120, 420, report.getThingsToFinish());
+		writer.write(120, 260, report.getThingsUndone());
 		
 		
 		writer.saveFile();
