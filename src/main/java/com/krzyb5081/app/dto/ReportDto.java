@@ -19,4 +19,7 @@ public class ReportDto {
 	public String thingsDone;
 	public String thingsToFinish;
 	public String thingsUndone;
+	public Boolean weekDuty;
+	public Boolean holidayDuty;
+	public Boolean late;
 }
