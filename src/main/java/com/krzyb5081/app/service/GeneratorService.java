@@ -24,12 +24,17 @@ public class GeneratorService {
 		
 		writer.openFile();
 		
-		writer.write(120, 700, report.getNameAndSurname());
-		writer.write(300, 700, report.getDate());
-		writer.write(400, 700, report.getWorkTime());
-		writer.write(120, 600, report.getThingsDone());
-		writer.write(120, 420, report.getThingsToFinish());
-		writer.write(120, 260, report.getThingsUndone());
+		writer.write(100, 700, report.getNameAndSurname());
+		writer.write(200, 700, report.getDate());
+		writer.write(300, 700, report.getWorkTime());
+		writer.write(100, 600, report.getThingsDone());
+		writer.write(100, 420, report.getThingsToFinish());
+		writer.write(100, 260, report.getThingsUndone());
+		writer.write(100, 120, report.getWeekDuty().toString());
+		writer.write(100, 240, report.getHolidayDuty().toString());
+		writer.write(100, 360, report.getLate().toString());
+		
+		
 		
 		
 		writer.saveFile();
