@@ -8,31 +8,29 @@ import com.krzyb5081.app.dto.ReportDto;
 
 @Service
 public class GeneratorService {
-	public static String nameAndSurname = "Jan Kowalski";
-	public static String date = "21.10.2024";
-	public static String workTime = "8:00 - 16:00 (8 godzin)";
-	public static String thingsDone = "Text here1, text here2, text here3, text here4, text here5ssssssssssssssssssssssssssssssssssssss, text here6, text here7, text here8, text here9, text here10, text here11, text here12, text here13, text here14.";
-	public static String thingsToFinish = "Text here1, text here2, text here3, text here4, text here5, text here6, text here7, text here8, text here9, text here10, text here11, text here12, text here13, text here14.";
-	public static String thingsUndone = "Text here1, text here2, text here3, text here4, text here5, text here6, text here7, text here8, text here9, text here10, text here11, text here12, text here13, text here14.";
-	public static Boolean weekDuty = false;
-	public static Boolean holidayDuty = false;
-	public static Boolean late = false;
 	
 	public void generateReport(ReportDto report) throws IOException {
+		
+		if(report.getWeekDuty() == null)report.setWeekDuty(false);
+		if(report.getHolidayDuty() == null)report.setHolidayDuty(false);
+		if(report.getLate() == null)report.setLate(false);
 
 		TextWriter writer = new TextWriter("src/main/resources/generator/template.pdf","src/main/resources/generator/report.pdf");
 		
 		writer.openFile();
 		
-		writer.write(100, 700, report.getNameAndSurname());
-		writer.write(200, 700, report.getDate());
-		writer.write(300, 700, report.getWorkTime());
+		writer.write(100, 720, "Pracownik: "+report.getNameAndSurname());
+		writer.write(100, 700, "Dzien: "+report.getDate());
+		writer.write(220, 700, "Czas pracy: "+report.getWorkTime());
+		writer.write(100, 620, "Prace zrealizowane:");
 		writer.write(100, 600, report.getThingsDone());
+		writer.write(100, 440, "Prace do dokonczenia:");
 		writer.write(100, 420, report.getThingsToFinish());
+		writer.write(100, 280, "Prace niezrealizowane:");
 		writer.write(100, 260, report.getThingsUndone());
-		writer.write(100, 120, report.getWeekDuty().toString());
-		writer.write(100, 240, report.getHolidayDuty().toString());
-		writer.write(100, 360, report.getLate().toString());
+		writer.write(120, 120, "Dyzur dzienny: "+report.getWeekDuty().toString());
+		writer.write(120, 100, "Dyzur swiateczny: "+report.getHolidayDuty().toString());
+		writer.write(120, 80, "Spoznienie: "+report.getLate().toString());
 		
 		
 		

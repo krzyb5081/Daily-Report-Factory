@@ -19,105 +19,190 @@ endobj
 /Type /Page
 /MediaBox [0.0 0.0 612.0 792.0]
 /Parent 2 0 R
-/Contents [4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R]
-/Resources 10 0 R
+/Contents [4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R
+14 0 R 15 0 R]
+/Resources 16 0 R
 >>
 endobj
 4 0 obj
 <<
-/Length 56
+/Length 73
 >>
 stream
 BT
-/F1 10 Tf
-120 700 Td
-(dupsztal pedal) Tj
-0 -10 Td
+/F1 14 Tf
+100 720 Td
+(Pracownik: Krzysztof Pomarancza) Tj
+0 -20 Td
 ET
 
 endstream
 endobj
 5 0 obj
 <<
-/Length 52
+/Length 59
 >>
 stream
 BT
-/F1 10 Tf
-300 700 Td
-(14:02:2000) Tj
-0 -10 Td
+/F1 14 Tf
+100 700 Td
+(Dzien: 20.05.2025) Tj
+0 -20 Td
 ET
 
 endstream
 endobj
 6 0 obj
 <<
-/Length 55
+/Length 63
 >>
 stream
 BT
-/F1 10 Tf
-400 700 Td
-(14:00 - 15:00) Tj
-0 -10 Td
+/F1 14 Tf
+220 700 Td
+(Czas pracy: 8:00-8:15) Tj
+0 -20 Td
 ET
 
 endstream
 endobj
 7 0 obj
 <<
-/Length 54
+/Length 61
 >>
 stream
 BT
-/F1 10 Tf
-120 600 Td
-(zrobilem nic) Tj
-0 -10 Td
+/F1 14 Tf
+100 620 Td
+(Prace zrealizowane:) Tj
+0 -20 Td
 ET
 
 endstream
 endobj
 8 0 obj
 <<
-/Length 53
+/Length 62
 >>
 stream
 BT
-/F1 10 Tf
-120 420 Td
-(skonczyc to) Tj
-0 -10 Td
+/F1 14 Tf
+100 600 Td
+(generowanie raportow) Tj
+0 -20 Td
 ET
 
 endstream
 endobj
 9 0 obj
 <<
-/Length 55
+/Length 63
 >>
 stream
 BT
-/F1 10 Tf
-120 260 Td
-(kopanie rowow) Tj
-0 -10 Td
+/F1 14 Tf
+100 440 Td
+(Prace do dokonczenia:) Tj
+0 -20 Td
 ET
 
 endstream
 endobj
 10 0 obj
 <<
-/Font 11 0 R
+/Length 74
 >>
+stream
+BT
+/F1 14 Tf
+100 420 Td
+(zrobic zeby dokumenty byly ladne) Tj
+0 -20 Td
+ET
+
+endstream
 endobj
 11 0 obj
 <<
-/F1 12 0 R
+/Length 64
 >>
+stream
+BT
+/F1 14 Tf
+100 280 Td
+(Prace niezrealizowane:) Tj
+0 -20 Td
+ET
+
+endstream
 endobj
 12 0 obj
+<<
+/Length 65
+>>
+stream
+BT
+/F1 14 Tf
+100 260 Td
+(logowanie i rejestracja) Tj
+0 -20 Td
+ET
+
+endstream
+endobj
+13 0 obj
+<<
+/Length 61
+>>
+stream
+BT
+/F1 14 Tf
+120 120 Td
+(Dyzur dzienny: true) Tj
+0 -20 Td
+ET
+
+endstream
+endobj
+14 0 obj
+<<
+/Length 65
+>>
+stream
+BT
+/F1 14 Tf
+120 100 Td
+(Dyzur swiateczny: false) Tj
+0 -20 Td
+ET
+
+endstream
+endobj
+15 0 obj
+<<
+/Length 57
+>>
+stream
+BT
+/F1 14 Tf
+120 80 Td
+(Spoznienie: true) Tj
+0 -20 Td
+ET
+
+endstream
+endobj
+16 0 obj
+<<
+/Font 17 0 R
+>>
+endobj
+17 0 obj
+<<
+/F1 18 0 R
+>>
+endobj
+18 0 obj
 <<
 /Type /Font
 /Subtype /Type1
@@ -126,26 +211,32 @@ endobj
 >>
 endobj
 xref
-0 13
+0 19
 0000000000 65535 f
 0000000015 00000 n
 0000000078 00000 n
 0000000135 00000 n
-0000000280 00000 n
-0000000388 00000 n
-0000000492 00000 n
-0000000599 00000 n
-0000000705 00000 n
-0000000810 00000 n
-0000000917 00000 n
-0000000952 00000 n
-0000000985 00000 n
+0000000322 00000 n
+0000000447 00000 n
+0000000558 00000 n
+0000000673 00000 n
+0000000786 00000 n
+0000000900 00000 n
+0000001015 00000 n
+0000001142 00000 n
+0000001259 00000 n
+0000001377 00000 n
+0000001491 00000 n
+0000001609 00000 n
+0000001719 00000 n
+0000001754 00000 n
+0000001787 00000 n
 trailer
 <<
 /Root 1 0 R
-/ID [<1AAE6873AADC2B26193DB4E8C04D29EF> <1AAE6873AADC2B26193DB4E8C04D29EF>]
-/Size 13
+/ID [<FF5066E6874F89A85826D09C6AD2F2D3> <FF5066E6874F89A85826D09C6AD2F2D3>]
+/Size 19
 >>
 startxref
-1085
+1887
 %%EOF

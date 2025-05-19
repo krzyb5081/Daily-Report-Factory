@@ -32,7 +32,7 @@ public class TextWriter {
 		this.contentStream.beginText();
 		
 		//setting font
-		this.contentStream.setFont(PDType1Font.TIMES_ROMAN, 10);
+		this.contentStream.setFont(PDType1Font.TIMES_ROMAN, 14);
 		
 		//setting initial text position
 		this.contentStream.newLineAtOffset(offsetX, offsetY);
@@ -43,7 +43,7 @@ public class TextWriter {
 			this.contentStream.showText(textFragment);
 			
 			//setting new line position
-			this.contentStream.newLineAtOffset(0, -10);
+			this.contentStream.newLineAtOffset(0, -20);
 			
 		}
 		
