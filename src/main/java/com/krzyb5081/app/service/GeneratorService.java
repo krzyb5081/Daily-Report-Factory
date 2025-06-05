@@ -28,9 +28,9 @@ public class GeneratorService {
 		writer.write(100, 420, report.getThingsToFinish());
 		writer.write(100, 280, "Prace niezrealizowane:");
 		writer.write(100, 260, report.getThingsUndone());
-		writer.write(120, 120, "Dyzur dzienny: "+report.getWeekDuty().toString());
-		writer.write(120, 100, "Dyzur swiateczny: "+report.getHolidayDuty().toString());
-		writer.write(120, 80, "Spoznienie: "+report.getLate().toString());
+		writer.write(120, 120, "Dyzur dzienny: "+report.getWeekDuty() != null ? "Tak" : "Nie");
+		writer.write(120, 100, "Dyzur swiateczny: "+report.getHolidayDuty() != null ? "Tak" : "Nie");
+		writer.write(120, 80, "Spoznienie: "+report.getLate() != null ? "Tak" : "Nie");
 		
 		
 		
