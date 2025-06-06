@@ -32,18 +32,4 @@ public class WebSecurityConfiguration {
 
 		return http.build();
 	}
-
-    @Bean
-    UserDetailsService userDetailsService() {
-    	
-    	PasswordEncoder encoder =
-    		     PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    	
-		UserDetails user =
-				User.withUsername("user")
-				.password(encoder.encode("password"))
-				.roles("USER")
-				.build();
-		return new InMemoryUserDetailsManager(user);
-	}
 }
