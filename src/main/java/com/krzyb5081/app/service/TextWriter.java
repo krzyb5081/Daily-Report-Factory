@@ -2,12 +2,14 @@ package com.krzyb5081.app.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 public class TextWriter {
@@ -32,7 +34,9 @@ public class TextWriter {
 		this.contentStream.beginText();
 		
 		//setting font
-		this.contentStream.setFont(PDType1Font.TIMES_ROMAN, 14);
+		InputStream fontStream = getClass().getResourceAsStream("/fonts/Anonymous_Pro.ttf");
+		PDType0Font font = PDType0Font.load(document, fontStream);
+		this.contentStream.setFont(font, 14);
 		
 		//setting initial text position
 		this.contentStream.newLineAtOffset(offsetX, offsetY);
