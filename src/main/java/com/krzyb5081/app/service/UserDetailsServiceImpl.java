@@ -31,5 +31,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 				.build();
 		return userDetails;
 	}
+	
+	public String createUser(UserModel userModel) {
+		if (userRepo.findByUserName(userModel.getUserName()).isPresent()) {
+			return "error";
+		}
+		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		
+		userModel.setPassword(encoder.encode(userModel.getPassword()));
+		userRepo.save(userModel);
+		
+		return null;
+	}
 
 }

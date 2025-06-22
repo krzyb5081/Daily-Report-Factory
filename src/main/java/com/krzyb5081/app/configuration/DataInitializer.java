@@ -3,10 +3,6 @@ package com.krzyb5081.app.configuration;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.MessageDigestPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.krzyb5081.app.model.UserModel;
 import com.krzyb5081.app.repository.UserRepository;
 
