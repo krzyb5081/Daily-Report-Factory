@@ -36,9 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		if (userRepo.findByUserName(userModel.getUserName()).isPresent()) {
 			return "error";
 		}
-		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		
-		userModel.setPassword(encoder.encode(userModel.getPassword()));
+		userModel.setRole("USER");
 		userRepo.save(userModel);
 		
 		return null;
