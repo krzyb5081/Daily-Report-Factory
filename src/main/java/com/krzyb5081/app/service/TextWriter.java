@@ -71,12 +71,14 @@ public class TextWriter {
 		
 	}
 	
-	public void saveFile() throws IOException {
+	public File saveFile() throws IOException {
 		//saving document
 		this.document.save(outputFile);
 		
 		//closing document
 		this.document.close();
+		
+		return outputFile;
 		
 	}
 	

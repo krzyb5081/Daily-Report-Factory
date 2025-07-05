@@ -1,8 +1,16 @@
 package com.krzyb5081.app.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +33,11 @@ public class ViewController {
 	@GetMapping("/")
 	public String slash() {
 		return "index";
+	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
 	}
 	
 	@GetMapping("/home")
@@ -55,14 +68,21 @@ public class ViewController {
 	}
 	
 	@PostMapping("/createReport")
-	public String postCreateReport(@Valid ReportDto reportDto) {
+	public ResponseEntity<Resource> postCreateReport(@Valid ReportDto reportDto) {
 		System.out.print(reportDto.toString());
 		try {
-			generatorService.generateReport(reportDto);
+			File reportFile = generatorService.generateReport(reportDto);
+			Resource resource = new ByteArrayResource(Files.readAllBytes(reportFile.toPath()));
+			
+			return ResponseEntity.ok()
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + reportFile.getName())
+					.contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .contentLength(reportFile.length())
+                    .body(resource);
+			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
-		return "showReport";
 	}
 }

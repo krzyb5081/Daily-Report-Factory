@@ -1,5 +1,6 @@
 package com.krzyb5081.app.service;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import com.krzyb5081.app.dto.ReportDto;
 @Service
 public class GeneratorService {
 	
-	public void generateReport(ReportDto report) throws IOException {
+	public File generateReport(ReportDto report) throws IOException {
 		
 		if(report.getWeekDuty() == null)report.setWeekDuty(false);
 		if(report.getHolidayDuty() == null)report.setHolidayDuty(false);
@@ -35,6 +36,6 @@ public class GeneratorService {
 		
 		
 		
-		writer.saveFile();
+		return writer.saveFile();
 	}
 }
