@@ -15,11 +15,13 @@ public class DataInitializer {
         return args -> {
             if (userRepository.count() == 0) {
                 UserModel user1 = new UserModel();
+                user1.setFullName("Krzysztof Sobczak");
                 user1.setUserName("admin");
                 user1.setPassword("admin123");
                 user1.setRole("ADMIN");
 
                 UserModel user2 = new UserModel();
+                user2.setFullName("Grzegorz Brzeczyszczykiewicz");
                 user2.setUserName("user");
                 user2.setPassword("user123");
                 user2.setRole("USER");

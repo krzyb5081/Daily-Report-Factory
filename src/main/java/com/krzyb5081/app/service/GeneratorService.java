@@ -3,14 +3,41 @@ package com.krzyb5081.app.service;
 import java.io.File;
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.krzyb5081.app.dto.ReportDto;
+import com.krzyb5081.app.model.UserModel;
+import com.krzyb5081.app.repository.UserRepository;
 
 @Service
 public class GeneratorService {
 	
+	@Autowired
+	UserRepository userRepo;
+	
 	public File generateReport(ReportDto report) throws IOException {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth != null && auth.isAuthenticated()) {
+            Object principal = auth.getPrincipal();
+
+            if (principal instanceof UserDetails) {
+                String username = ((UserDetails) principal).getUsername();
+                UserModel userModel= userRepo.findByUserName(username).orElseThrow();
+                report.setNameAndSurname(userModel.getFullName());
+                
+            } else {
+                System.out.println("Principal is not UserDetails");
+            }
+        } else {
+            System.out.println("No logged user");
+        }
+		
 		
 		if(report.getWeekDuty() == null)report.setWeekDuty(false);
 		if(report.getHolidayDuty() == null)report.setHolidayDuty(false);
