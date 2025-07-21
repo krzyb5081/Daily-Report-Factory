@@ -1,25 +1,130 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-<meta>
-	<title>Have a good day</title>
+  <meta charset="UTF-8">
+  <title>Create your report</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-	<h1>Have a good day</h1>
+<body class="bg-gray-100 min-h-screen p-6">
+
+	<div class="w-full flex justify-end p-4">
+	  <a href="/logout" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
+	    Logout
+	  </a>
+	</div>
+
+  <div class="max-w-2xl mx-auto bg-white shadow-lg p-6 rounded-lg">
+    <h1 class="text-2xl font-bold mb-4 text-gray-800">Create a Report</h1>
+
+    <form th:action="@{/createReport}" method="post" class="space-y-4">
+
+      <div>
+        <label class="block text-sm font-medium">Date</label>
+        <input type="text" name="date" placeholder="dd:mm:yyyy" class="w-full border border-gray-300 rounded p-2" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Work time</label>
+        <input type="text" name="workTime" placeholder="hh:mm-hh:mm/(hh)" class="w-full border border-gray-300 rounded p-2" />
+      </div>
+
+      <!-- Done -->
+      <div>
+        <label class="block text-sm font-medium">Done</label>
+        <ul id="doneList" class="space-y-2 mb-2"></ul>
+        <input id="doneInput" type="text" placeholder="Wpisz i Enter" class="w-full border border-gray-300 rounded p-2" />
+        <input type="hidden" name="thingsDone" id="doneHidden" />
+      </div>
+
+      <!-- To Finish -->
+      <div>
+        <label class="block text-sm font-medium">To Finish</label>
+        <ul id="finishList" class="space-y-2 mb-2"></ul>
+        <input id="finishInput" type="text" placeholder="Wpisz i Enter" class="w-full border border-gray-300 rounded p-2" />
+        <input type="hidden" name="thingsToFinish" id="finishHidden" />
+      </div>
+
+      <!-- Undone -->
+      <div>
+        <label class="block text-sm font-medium">Undone</label>
+        <ul id="undoneList" class="space-y-2 mb-2"></ul>
+        <input id="undoneInput" type="text" placeholder="Wpisz i Enter" class="w-full border border-gray-300 rounded p-2" />
+        <input type="hidden" name="thingsUndone" id="undoneHidden" />
+      </div>
+
+      <!-- Checkboxy -->
+      <div class="flex items-center space-x-4">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" name="weekDuty" class="form-checkbox" />
+          <span>Week duty</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" name="holidayDuty" class="form-checkbox" />
+          <span>Holiday duty</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" name="late" class="form-checkbox" />
+          <span>Late</span>
+        </label>
+      </div>
+
+      <div>
+        <input type="submit" value="Generate" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer" />
+      </div>
+    </form>
+  </div>
+
+  <script>
+	  function setupDynamicInput(inputId, listId, hiddenId) {
+	    const input = document.getElementById(inputId);
+	    const list = document.getElementById(listId);
+	    const hidden = document.getElementById(hiddenId);
+	    const values = [];
 	
-	Create a report
+	    input.addEventListener('keydown', (e) => {
+	      if (e.key === 'Enter') {
+	        e.preventDefault();
+	        const val = input.value.trim();
+	        if (val !== '') {
+	          values.push(val);
+	          const li = document.createElement('li');
+	          li.textContent = val;
+	          li.className = "bg-gray-100 px-3 py-1 rounded shadow";
+	          list.appendChild(li);
+	          hidden.value = values.join('\|');
+	          input.value = '';
+	        }
+	      }
+	    });
 	
-	<form th:action="@{/createReport}" method="post">
-		<div><label>Name and Surname: <input type="text" name="nameAndSurname" placeholder="Name Surname"></label></div>
-		<div><label>Date: <input type="text" name="date" placeholder="dd:mm:yyyy"></label></div>
-		<div><label>Work time: <input type="text" name="workTime" placeholder="hh:mm-hh:mm/(hh)"></label></div>
-		<div><label>Done: <input type="text" name="thingsDone" placeholder="1. Done thing."></label></div>
-		<div><label>To finish: <input type="text" name="thingsToFinish" placeholder="1. Thing to finish."></label></div>
-		<div><label>Undone: <input type="text" name="thingsUndone" placeholder="1. Undone thing."></label></div>
-		<div><label>Week duty: <input type="checkbox" name="weekDuty"></label></div>
-		<div><label>Holiday duty: <input type="checkbox" name="holidayDuty"></label></div>
-		<div><label>Late: <input type="checkbox" name="late"></label></div>
-		<div><input type="submit" value="Generate"/></div>
-	</form>
+	    input.addEventListener('input', () => {
+	      hidden.value = [...values, input.value.trim()].filter(Boolean).join('\|');
+	    });
+	
+	    window._saveInputs = window._saveInputs || [];
+	    window._saveInputs.push(() => {
+	      const val = input.value.trim();
+	      if (val !== '') {
+	        values.push(val);
+	        const li = document.createElement('li');
+	        li.textContent = val;
+	        li.className = "bg-gray-100 px-3 py-1 rounded shadow";
+	        list.appendChild(li);
+	        input.value = '';
+	      }
+	      hidden.value = values.join('\|');
+	    });
+	  }
+	
+	  setupDynamicInput('doneInput', 'doneList', 'doneHidden');
+	  setupDynamicInput('finishInput', 'finishList', 'finishHidden');
+	  setupDynamicInput('undoneInput', 'undoneList', 'undoneHidden');
+	
+	  document.querySelector('form').addEventListener('submit', (e) => {
+	    if (window._saveInputs) {
+	      window._saveInputs.forEach(f => f());
+	    }
+	  });
+	</script>
 </body>
 </html>

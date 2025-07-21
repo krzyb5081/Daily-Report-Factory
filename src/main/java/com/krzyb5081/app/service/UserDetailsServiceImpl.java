@@ -34,12 +34,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	public String createUser(UserModel userModel) {
 		if (userRepo.findByUserName(userModel.getUserName()).isPresent()) {
-			return "error";
+			return "redirect:/register?error";
 		}
 		userModel.setRole("USER");
 		userRepo.save(userModel);
 		
-		return null;
+		return "login";
 	}
 
 }

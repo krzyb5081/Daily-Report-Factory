@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-	<title>Have a good day</title>
+  <meta charset="UTF-8">
+  <title>Have a Good Day</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-	<h1>Have a good day</h1>
-	
-	<p>Click <a th:href="@{/login}">here</a> to login.</p>
-	<p>Click <a th:href="@{/register}">here</a> to register.</p>
-	<p>Click <a th:href="@{/createReport}">here</a> to create Report.</p>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-6">
+
+  <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md text-center">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Have a Good Day, Choom</h1>
+
+    <div class="space-y-4">
+      <a th:href="@{/login}" class="block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">
+        Log in to your account
+      </a>
+
+      <a th:href="@{/register}" class="block bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">
+        Register a new account
+      </a>
+
+      <a th:href="@{/createReport}" class="block bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 transition">
+        Create a daily report
+      </a>
+    </div>
+  </div>
+
 </body>
 </html>

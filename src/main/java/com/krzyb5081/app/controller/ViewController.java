@@ -52,8 +52,7 @@ public class ViewController {
 	
 	@PostMapping("/register")
 	public String register(@Valid UserModel userModel) {
-		userService.createUser(userModel);
-		return "login";
+		return userService.createUser(userModel);
 	}
 	
 	@GetMapping("/showReports")

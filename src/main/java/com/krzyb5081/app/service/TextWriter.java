@@ -83,38 +83,45 @@ public class TextWriter {
 	}
 	
 	private List<String> splitText(String text, int maxLineLength) {
-		List<String> textList = new ArrayList<String>();
-		
-		if(text.length() <= maxLineLength) {
-			textList.add(text);
-			return textList;
-		}
-		
-		int startIndex = 0;
-		
-		while(startIndex < text.length()) {
-			
-			
-			int endIndex = startIndex + maxLineLength;
-			
-			if(endIndex >= text.length()) {
-				endIndex = text.length();
-			} else {
-				while((endIndex < text.length() && (text.charAt(endIndex) != ' '))) endIndex++;
-				
-			}
-			
-			textList.add(text.substring(startIndex, endIndex));
-			
-			startIndex = endIndex;
-			
-		}
-		
-		
-		for (String showString: textList) {
-			System.out.println(showString);
-		}
-		
-		return textList;
+	    List<String> textList = new ArrayList<>();
+
+	    String[] fragments = text.split("\\|");
+
+	    for (String fragment : fragments) {
+	        fragment = fragment.trim();
+
+	        if (fragment.length() <= maxLineLength) {
+	            textList.add(fragment);
+	        } else {
+	            int startIndex = 0;
+
+	            while (startIndex < fragment.length()) {
+	                int endIndex = startIndex + maxLineLength;
+
+	                if (endIndex >= fragment.length()) {
+	                    endIndex = fragment.length();
+	                } else {
+	                    // don't cut word in half
+	                    while (endIndex < fragment.length() && fragment.charAt(endIndex) != ' ') {
+	                        endIndex++;
+	                    }
+	                }
+
+	                String part = fragment.substring(startIndex, endIndex).trim();
+	                if (!part.isEmpty()) {
+	                    textList.add(part);
+	                }
+
+	                startIndex = endIndex;
+	            }
+	        }
+	    }
+
+	    // Debug print
+	    for (String s : textList) {
+	        System.out.println("[line] " + s);
+	    }
+
+	    return textList;
 	}
 }

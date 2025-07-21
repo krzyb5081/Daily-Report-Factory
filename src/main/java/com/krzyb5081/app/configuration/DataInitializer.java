@@ -37,6 +37,3 @@ public class DataInitializer {
 
 //// TODO
 //////////// Make only administrator to change email credentials
-/////////// Keep email credentials in safe place
-///// Make logout
-///////// Make front-end 

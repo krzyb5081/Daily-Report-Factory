@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>Spring Security Example </title>
-    </head>
-    <body>
-        <div th:if="${param.error}">
-            Error
-        </div>
-        <form th:action="@{/register}" method="post">
-        	<div><label> Name and Surname: <input type="text" name="fullName"/> </label></div>
-            <div><label> User Name : <input type="text" name="userName"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Register"/></div>
-        </form>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Rejestracja</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+
+  <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">Register</h1>
+
+    <div th:if="${param.error}" class="mb-4 text-red-600 text-center font-semibold">
+      Registration error
+    </div>
+
+    <form th:action="@{/register}" method="post" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">Name and lastname</label>
+        <input type="text" name="fullName" placeholder="Jonny Silverhand" class="w-full border border-gray-300 rounded p-2" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">User name</label>
+        <input type="text" name="userName" placeholder="jsilverhand" class="w-full border border-gray-300 rounded p-2" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Password</label>
+        <input type="password" name="password" placeholder="********" class="w-full border border-gray-300 rounded p-2" required />
+      </div>
+
+      <div>
+        <input type="submit" value="register"
+               class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 cursor-pointer transition" />
+      </div>
+    </form>
+  </div>
+
+</body>
 </html>
