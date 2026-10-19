@@ -7,19 +7,18 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Component
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 public class ReportDto {
-	public String nameAndSurname;
-	public String date;
-	public String workTime;
-	public String thingsDone;
-	public String thingsToFinish;
-	public String thingsUndone;
-	public Boolean weekDuty;
-	public Boolean holidayDuty;
-	public Boolean late;
+	private String nameAndSurname;
+	private String date;
+	private String workTime;
+	private String thingsDone;
+	private String thingsToFinish;
+	private String thingsUndone;
+	private Boolean weekDuty;
+	private Boolean holidayDuty;
+	private Boolean late;
 }
