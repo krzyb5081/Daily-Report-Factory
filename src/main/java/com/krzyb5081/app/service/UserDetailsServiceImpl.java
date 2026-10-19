@@ -17,19 +17,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
 	UserRepository userRepo;
+
+	private final PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserModel userModel = userRepo.findByUserName(username).orElseThrow();
-		
-		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     	
-		UserDetails userDetails =
-				User.withUsername(userModel.getUserName())
-				.password(encoder.encode(userModel.getPassword()))
+		return User.withUsername(userModel.getUserName())
+				.password(userModel.getPassword())
 				.roles(userModel.getRole())
 				.build();
-		return userDetails;
 	}
 	
 	public String createUser(UserModel userModel) {
@@ -37,9 +35,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			return "redirect:/register?error";
 		}
 		userModel.setRole("USER");
+		userModel.setPassword(encoder.encode(userModel.getPassword()));
 		userRepo.save(userModel);
 		
 		return "login";
 	}
-
 }
